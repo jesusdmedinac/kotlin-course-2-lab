@@ -41,7 +41,28 @@ fun main() {
 ```
 
 ### Paso 3: Ejecutar
-En la parte superior derecha de tu IntelliJ, o justo al lado de la palabra `main`, verás un botón verde de **Play** (▶️). Presiónalo. 
-IntelliJ llamará al compilador de Kotlin, transformará este texto en Bytecode, y luego llamará a la JVM para que lo ejecute en tu terminal. 
 
-Si ves el banner de bienvenida... ¡Felicidades! Tienes tu entorno agnóstico configurado y listo para empezar a programar lógica en la siguiente lección.
+---
+
+## 🚀 Cómo ejecutar el proyecto (Multi-entorno)
+
+Esta aplicación es una herramienta interactiva de consola (CLI). Puedes ejecutarla cómodamente según el entorno que utilices:
+
+### 1. Android Studio / IntelliJ IDEA
+* Abre [`src/main/kotlin/Main.kt`](src/main/kotlin/Main.kt).
+* Haz clic en el botón verde de **Play** (▶️) situado al lado izquierdo de la línea `fun main()`.
+* La aplicación se ejecutará en la pestaña inferior de **Run** (Consola interactiva), donde podrás escribir con tu teclado y presionar `Enter`.
+
+### 2. Google Antigravity / Visual Studio Code
+* Puedes presionar el atajo predeterminado de ejecución: **`Cmd + Shift + B`** (macOS) o **`Ctrl + Shift + B`** (Linux/Windows).
+* O bien, abre la paleta de comandos (`Cmd + Shift + P` o `Ctrl + Shift + P`), escribe `Tasks: Run Task` y selecciona **Run AI Chat CLI**.
+* Se abrirá una terminal interactiva integrada donde podrás interactuar con la aplicación.
+
+### 3. Terminal (macOS, Linux o PowerShell)
+* Ejecuta el siguiente comando:
+  ```bash
+  ./gradlew run --console=plain -q
+  ```
+  *(En Windows CMD/PowerShell: `gradlew.bat run --console=plain -q`)*
+* **Nota técnica:** Las banderas `--console=plain -q` suprimen las barras de estado del daemon de Gradle para que los prompts de texto y la interacción por teclado sean limpios.
+
