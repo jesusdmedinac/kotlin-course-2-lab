@@ -25,3 +25,10 @@ kotlin {
 application {
     mainClass.set("MainKt")
 }
+
+// Habilita la entrada estándar (teclado) en la tarea 'run'.
+// Es indispensable para que aplicaciones interactivas CLI puedan leer datos
+// desde la terminal mediante readlnOrNull() sin provocar un cierre prematuro del flujo (EOF).
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
+}
