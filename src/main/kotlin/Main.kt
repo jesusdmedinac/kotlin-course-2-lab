@@ -6,7 +6,9 @@
  * En la Lección 3 implementaremos un bucle principal y control de flujo exhaustivo.
  */
 
-// Definimos un Enum para representar las opciones de nuestro menú de forma estricta.
+/**
+ * Represents the exhaustive set of selectable navigation options in the CLI menu.
+ */
 enum class MenuOption {
     CHAT,
     SETTINGS,
@@ -14,6 +16,9 @@ enum class MenuOption {
     UNKNOWN
 }
 
+/**
+ * Main application entry point for the interactive AI Chat CLI.
+ */
 fun main() {
     println("===============================")
     println("🤖 AI Chat CLI")
@@ -24,14 +29,9 @@ fun main() {
     // Capturamos la entrada de forma segura
     val input: String? = readlnOrNull()
 
-    // Validamos usando if-else tradicional
-    // Nota: Esto puede simplificarse a if (input.isNullOrBlank()) pero lo refactorizaremos en la Lección 4.
-    val username: String
-    if (input != null && input.isNotBlank()) {
-        username = input
-    } else {
-        username = "Guest"
-    }
+    // Validamos la entrada: si no es nula ni está en blanco la usamos; de lo contrario, asignamos "Guest".
+    // Nota didáctica: En la Lección 4 modularizaremos y simplificaremos esta lógica con funciones dedicadas.
+    val username: String = if (!input.isNullOrBlank()) input else "Guest"
 
     println("\nHello, $username!")
 
