@@ -1,13 +1,13 @@
 /**
- * Punto de entrada principal de nuestra aplicación Kotlin.
+ * Main entry point of our Kotlin application.
  *
- * En la Lección 1 aprendimos que la JVM buscará una función llamada 'main'.
- * En la Lección 2 aprendimos a recibir datos del usuario de forma segura.
- * En la Lección 3 implementaremos un bucle principal y control de flujo exhaustivo.
+ * In Lesson 1 we learned that the JVM searches for a function named 'main'.
+ * In Lesson 2 we learned how to capture and validate user input safely against nulls.
+ * In Lesson 3 we implement the interactive main loop with exhaustive control flow.
  */
 
 /**
- * Representa el conjunto exhaustivo de opciones seleccionables en el menú de la consola.
+ * Represents the exhaustive set of selectable options in the console main menu.
  */
 enum class MenuOption {
     CHAT,
@@ -17,7 +17,7 @@ enum class MenuOption {
 }
 
 /**
- * Punto de entrada principal para la aplicación interactiva del Chat de IA.
+ * Main interactive entry point for the AI Chat CLI application.
  */
 fun main() {
     println("===============================")
@@ -26,16 +26,16 @@ fun main() {
 
     print("Please, enter your name: ")
     
-    // Capturamos la entrada de forma segura
+    // Safely capture user terminal input
     val input: String? = readlnOrNull()
 
-    // Validamos la entrada: si no es nula ni está en blanco la usamos; de lo contrario, asignamos "Guest".
-    // Nota didáctica: En la Lección 4 modularizaremos y simplificaremos esta lógica con funciones dedicadas.
+    // Validate input: if non-null and not blank use it; otherwise fallback to "Guest".
+    // Pedagogical note: In Lesson 4 we will modularize and clean up this logic with dedicated functions.
     val username: String = if (!input.isNullOrBlank()) input else "Guest"
 
     println("\nHello, $username!")
 
-    // Bucle principal (Main Loop) que mantiene viva la aplicación interactiva
+    // Main interactive loop that keeps the application alive
     while (true) {
         println("\n--- Main Menu ---")
         println("1. Chat")
@@ -45,8 +45,8 @@ fun main() {
 
         val rawOption: String? = readlnOrNull()
 
-        // Usamos 'when' como expresión para mapear el input crudo (String) 
-        // a nuestro Enum estructurado, devolviendo el valor directamente.
+        // Use 'when' as a first-class expression to parse raw text (String)
+        // into our structured Enum, returning the value directly.
         val selectedOption: MenuOption = when (rawOption) {
             "1" -> MenuOption.CHAT
             "2" -> MenuOption.SETTINGS
@@ -54,9 +54,9 @@ fun main() {
             else -> MenuOption.UNKNOWN
         }
 
-        // Usamos 'when' nuevamente, pero esta vez con nuestro Enum. Al ser una jerarquía 
-        // cerrada (el compilador conoce todas las opciones), nos obliga a manejar 
-        // exhaustivamente todos los casos posibles sin necesidad de un 'else'.
+        // Use 'when' with our Enum. Because it is a closed hierarchy
+        // (the compiler knows all possible cases), it enforces exhaustive
+        // branch handling without requiring a default 'else'.
         when (selectedOption) {
             MenuOption.CHAT -> {
                 println(">>> Entering chat mode... (Work in progress)")
@@ -66,7 +66,7 @@ fun main() {
             }
             MenuOption.EXIT -> {
                 println("Goodbye, $username! See you soon.")
-                break // Rompe el bucle while(true) y finaliza el programa
+                break // Break out of the while(true) loop and terminate cleanly
             }
             MenuOption.UNKNOWN -> {
                 println("Invalid option. Please try again.")
