@@ -17,6 +17,7 @@ Utilizamos un sistema de *Tags* lineales de Git para que puedas viajar en el tie
 | **L1: Entorno y Hola Mundo** | [`L1-start`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L1-start) | [`L1-done`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L1-done) |
 | **L2: Variables y Null Safety** | [`L2-start`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L2-start) | [`L2-done`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L2-done) |
 | **L3: Jerarquías y Control de Flujo** | [`L3-start`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L3-start) | [`L3-done`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L3-done) |
+| **L4: Anatomía de Funciones** | [`L4-start`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L4-start) | [`L4-done`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L4-done) |
 
 Para moverte a cualquier lección en tu terminal:
 ```bash
