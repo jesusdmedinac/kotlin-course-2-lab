@@ -92,7 +92,7 @@ fun executeMenuOption(option: MenuOption, username: String): Boolean = when (opt
                 println("Moderated words: ${detectedWords.joinToString(", ")}".yellow() taggedWith "FILTER".yellow())
             }
 
-            println("AI: \"$sanitized\"" taggedWith "AI".green())
+            println("\"$sanitized\"" taggedWith "AI".green())
         } else {
             println("No message provided.".yellow())
         }
