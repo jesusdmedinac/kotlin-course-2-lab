@@ -7,6 +7,7 @@
  * In Lesson 4 we modularized the application using default arguments, named arguments,
  * and single-expression functions.
  * In Lesson 5 we enhance the CLI output using extension functions and infix notation.
+ * In Lesson 6 we introduce higher-order functions, lambdas, and sanitization pipelines.
  */
 
 /**
@@ -77,7 +78,24 @@ fun printMenu() {
  */
 fun executeMenuOption(option: MenuOption, username: String): Boolean = when (option) {
     MenuOption.CHAT -> {
-        println("Entering chat mode... (Work in progress)" taggedWith "AI".green())
+        print("\n$username: ".cyan())
+        val userMessage = readlnOrNull().orEmpty()
+        if (userMessage.isNotBlank()) {
+            // Apply our custom higher-order censoring function with trailing lambda syntax
+            val sanitized = censorWords(userMessage) { word ->
+                word in FORBIDDEN_WORDS
+            }
+
+            // Also demonstrate myFilter by identifying and reporting any censored words
+            val detectedWords = userMessage.split(" ").myFilter { it.lowercase() in FORBIDDEN_WORDS }
+            if (detectedWords.isNotEmpty()) {
+                println("Moderated words: ${detectedWords.joinToString(", ")}".yellow() taggedWith "FILTER".yellow())
+            }
+
+            println("AI: \"$sanitized\"" taggedWith "AI".green())
+        } else {
+            println("No message provided.".yellow())
+        }
         true
     }
     MenuOption.SETTINGS -> {
