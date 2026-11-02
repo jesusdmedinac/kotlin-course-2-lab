@@ -8,6 +8,7 @@
  * and single-expression functions.
  * In Lesson 5 we enhance the CLI output using extension functions and infix notation.
  * In Lesson 6 we introduce higher-order functions, lambdas, and sanitization pipelines.
+ * In Lesson 7 we integrate an in-memory chat history utilizing Collections and Sequences.
  */
 
 /**
@@ -15,6 +16,7 @@
  */
 enum class MenuOption {
     CHAT,
+    HISTORY,
     SETTINGS,
     EXIT,
     UNKNOWN
@@ -52,8 +54,9 @@ fun askForUsername(defaultName: String = "Guest"): String {
  */
 fun parseMenuOption(raw: String?): MenuOption = when (raw?.trim()) {
     "1" -> MenuOption.CHAT
-    "2" -> MenuOption.SETTINGS
-    "3" -> MenuOption.EXIT
+    "2" -> MenuOption.HISTORY
+    "3" -> MenuOption.SETTINGS
+    "4" -> MenuOption.EXIT
     else -> MenuOption.UNKNOWN
 }
 
@@ -63,8 +66,9 @@ fun parseMenuOption(raw: String?): MenuOption = when (raw?.trim()) {
 fun printMenu() {
     println("\n--- Main Menu ---".bold())
     println("1. Chat")
-    println("2. Settings")
-    println("3. Exit")
+    println("2. History")
+    println("3. Settings")
+    println("4. Exit")
     print("Choose an option: ".cyan())
 }
 
@@ -81,6 +85,8 @@ fun executeMenuOption(option: MenuOption, username: String): Boolean = when (opt
         print("\n$username: ".cyan())
         val userMessage = readlnOrNull().orEmpty()
         if (userMessage.isNotBlank()) {
+            chatHistory.add(sender = username, message = userMessage)
+
             // Apply our custom higher-order censoring function with trailing lambda syntax
             val sanitized = censorWords(userMessage) { word ->
                 word in FORBIDDEN_WORDS
@@ -93,9 +99,14 @@ fun executeMenuOption(option: MenuOption, username: String): Boolean = when (opt
             }
 
             println("\"$sanitized\"" taggedWith "AI".green())
+            chatHistory.add(sender = "AI", message = sanitized)
         } else {
             println("No message provided.".yellow())
         }
+        true
+    }
+    MenuOption.HISTORY -> {
+        printChatHistory()
         true
     }
     MenuOption.SETTINGS -> {
@@ -110,6 +121,27 @@ fun executeMenuOption(option: MenuOption, username: String): Boolean = when (opt
         println("Invalid option. Please try again.".red())
         true
     }
+}
+
+/**
+ * Displays the recent chat history using Kotlin collection transformations and Sequences.
+ */
+fun printChatHistory(limit: Int = 5) {
+    if (chatHistory.isEmpty()) {
+        println("No chat history available yet. Start chatting to record messages.".yellow() taggedWith "HISTORY".yellow())
+        return
+    }
+
+    val recent = chatHistory.getRecentEntries(limit)
+    println("\n--- Chat History (Last ${recent.size} messages) ---".bold())
+
+    // Transform and display entries using lazy Sequence evaluation
+    recent.asSequence()
+        .map { entry ->
+            val styledSender = if (entry.sender == "AI") entry.sender.green() else entry.sender.cyan()
+            "[$styledSender] ${entry.message}"
+        }
+        .forEach { println(it) }
 }
 
 /**

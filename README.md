@@ -20,6 +20,7 @@ We use a linear Git *Tag* system so you can time-travel to any lesson state at w
 | **L4: Anatomy of Functions** | [`L4-start`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L4-start) | [`L4-done`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L4-done) |
 | **L5: Extension & Infix Functions** | [`L5-start`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L5-start) | [`L5-done`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L5-done) |
 | **L6: Higher-Order Functions & Lambdas** | [`L6-start`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L6-start) | [`L6-done`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L6-done) |
+| **L7: Collections & Sequences** | [`L7-start`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L7-start) | [`L7-done`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L7-done) |
 
 To jump to any lesson tag in your terminal:
 ```bash

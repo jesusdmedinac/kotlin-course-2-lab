@@ -20,6 +20,7 @@ Utilizamos un sistema de *Tags* lineales de Git para que puedas viajar en el tie
 | **L4: Anatomía de Funciones** | [`L4-start`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L4-start) | [`L4-done`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L4-done) |
 | **L5: Extensiones y Funciones Infix** | [`L5-start`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L5-start) | [`L5-done`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L5-done) |
 | **L6: Funciones de Orden Superior y Lambdas** | [`L6-start`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L6-start) | [`L6-done`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L6-done) |
+| **L7: Colecciones y Secuencias** | [`L7-start`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L7-start) | [`L7-done`](https://github.com/jesusdmedinac/kotlin-course-2-lab/tree/L7-done) |
 
 Para moverte a cualquier lección en tu terminal:
 ```bash
